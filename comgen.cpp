@@ -230,10 +230,11 @@ static void comgen_hookstep(lua_State *L, lua_Debug *ar) {
 int comgen_messagehook(lua_State *L) {
   int n = luaL_optinteger(L, 1, 0);
   if(n > 0) {
-    return lua_sethook(L, comgen_hookstep, LUA_MASKCOUNT, n);
+    lua_sethook(L, comgen_hookstep, LUA_MASKCOUNT, n);
   } else {
-    return lua_sethook(L, comgen_hookstep, 0, 0);
+    lua_sethook(L, comgen_hookstep, 0, 0);
   }
+  return 0;
 }
 
 int comgen_raiseprivacy(lua_State *L) {
